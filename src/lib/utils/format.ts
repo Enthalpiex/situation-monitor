@@ -65,6 +65,9 @@ export function formatNumber(value: number, decimals = 2): string {
  * Format percent change with sign
  */
 export function formatPercentChange(value: number, decimals = 2): string {
+	if (isNaN(value) || value === null || value === undefined) {
+		return '—';
+	}
 	const sign = value > 0 ? '+' : '';
 	return sign + value.toFixed(decimals) + '%';
 }
@@ -73,6 +76,7 @@ export function formatPercentChange(value: number, decimals = 2): string {
  * Get CSS class for positive/negative change
  */
 export function getChangeClass(value: number): 'up' | 'down' | '' {
+	if (isNaN(value) || value === null || value === undefined) return '';
 	if (value > 0) return 'up';
 	if (value < 0) return 'down';
 	return '';

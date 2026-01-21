@@ -12,6 +12,7 @@
 	const colorClass = $derived(getColorClass(sector.changePercent));
 
 	function getColorClass(change: number): string {
+		if (isNaN(change) || change === null || change === undefined) return 'unavailable';
 		if (change >= 2) return 'up-3';
 		if (change >= 1) return 'up-2';
 		if (change >= 0.5) return 'up-1';
@@ -95,5 +96,9 @@
 	}
 	.down-3 {
 		background: #aa0000;
+	}
+	.unavailable {
+		background: #3a3a3a;
+		opacity: 0.5;
 	}
 </style>
